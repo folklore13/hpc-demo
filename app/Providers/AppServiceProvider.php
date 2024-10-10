@@ -25,5 +25,9 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('manage-data', function (User $user) {
             return $user->role === 'admin';
         });
+
+        Gate::define('edit-profile', function (User $user) {
+            return $user->id === $user->id;
+        });
     }
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EditProfileController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LoginController;
@@ -27,6 +28,8 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/users', [DashboardController::class, 'users']);
     });
+    Route::get('/profile', [DashboardController::class, 'profile']);
+    Route::put('/profile', EditProfileController::class);
     Route::get('/categories', [CategoryController::class, 'index']);
     Route::get('/products', [ProductController::class, 'index']);
     Route::get('/logout', LogoutController::class);
