@@ -7,7 +7,9 @@
 @section('content')
     <h1 class="h3 mb-2 text-gray-800">Data Kategori</h1>
     <p class="mb-4">Ini adalah data semua kategori dari barang-barang yang ada.</p>
-    <button type="button" class="btn btn-success mb-4" data-bs-toggle="modal" data-bs-target="#tambahBarang">Tambah Kategori</button>
+    @can('manage-data')
+        <button type="button" class="btn btn-success mb-4" data-bs-toggle="modal" data-bs-target="#tambahBarang">Tambah Kategori</button>
+    @endcan
 
     <div class="card shadow mb-4">
         <div class="card-body">
