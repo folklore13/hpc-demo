@@ -6,6 +6,7 @@ use App\Models\User;
 use Auth;
 use Hash;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RegisterController extends Controller
 {
@@ -32,9 +33,12 @@ class RegisterController extends Controller
             Auth::login($user);
             $request->session()->regenerate();
 
-            return redirect()->intended('/')->with('success', 'User berhasil ditambahkan!');
+            Alert::success('Berhasil!', 'User berhasil didaftarkan');
+            return redirect()->intended('/');
         }
 
-        return redirect()->to('/login')->with('failed', 'Gagal menambahkan user');
+        Alert::error('Gagal daftar', 'Data tidak berhasil ditambahkan. Coba lagi.');
+
+        return redirect()->to('/login');
     }
 }
